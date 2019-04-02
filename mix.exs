@@ -20,7 +20,9 @@ defmodule Toksomanio.MixProject do
 
   defp deps do
     [
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:distillery, "~> 2.0"},
+      {:poison, "~> 3.1"}
     ]
   end
 end

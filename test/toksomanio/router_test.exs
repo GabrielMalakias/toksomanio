@@ -18,7 +18,7 @@ defmodule Toksomanio.RouterTest do
   end
 
   test "it establishes the execution order given a json input and returns a json" do
-    input = FileSupport.read("input")
+    input = FileSupport.read_and_decode("input")
     expected_output = FileSupport.read_and_decode("output")
 
     result = conn(:post, "/api/tasks", input)
@@ -31,7 +31,7 @@ defmodule Toksomanio.RouterTest do
   end
 
   test "it establishes the execution order given a json input and returns a text" do
-    input = FileSupport.read("input")
+    input = FileSupport.read_and_decode("input")
     expected_output = FileSupport.read("output", "text")
 
     result = conn(:post, "/api/tasks", input)
@@ -42,4 +42,18 @@ defmodule Toksomanio.RouterTest do
     assert result.status == 200
     assert result.resp_body == expected_output
   end
+
+  test "it not acceptable when its a unknown data type" do
+    input = FileSupport.read_and_decode("input")
+    expected_output = FileSupport.read("output", "text")
+
+    result = conn(:post, "/api/tasks", input)
+             |> put_req_header("accept", "text/klingon")
+             |> Router.call(@opts)
+
+    assert result.state == :sent
+    assert result.status == 406
+    assert result.resp_body == "Not acceptable"
+  end
+
 end

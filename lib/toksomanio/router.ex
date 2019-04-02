@@ -5,7 +5,7 @@ defmodule Toksomanio.Router do
   plug(:dispatch)
 
   get "/" do
-    send_resp(conn, 200, "Hello from toksomanio!")
+    send_resp(conn, 200, "Hello from Toksomanio!")
   end
 
   post "/api/tasks" do

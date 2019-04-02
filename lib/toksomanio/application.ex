@@ -10,7 +10,7 @@ defmodule Toksomanio.Application do
       Plug.Cowboy.child_spec(
         scheme: :http,
         plug: Toksomanio.Router,
-        options: [port: 4002]
+        options: [port: Application.get_env(:toksomanio, :port)]
       )
     ]
 

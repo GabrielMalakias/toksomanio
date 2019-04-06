@@ -13,7 +13,7 @@ defmodule Toksomanio.MixProject do
 
   def application do
     [
-      extra_applications: [:logger],
+      extra_applications: [:logger, :plug_cowboy],
       mod: {Toksomanio.Application, []}
     ]
   end

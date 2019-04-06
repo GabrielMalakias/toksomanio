@@ -1,21 +1,10 @@
 # Toksomanio
 
-**TODO: Add description**
+HTTP job processor service
 
-## Installation
+You can test this project running './test.sh'
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `toksomanio` to your list of dependencies in `mix.exs`:
+To change to get a json response you should just change the accept header
 
-```elixir
-def deps do
-  [
-    {:toksomanio, "~> 0.1.0"}
-  ]
-end
-```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/toksomanio](https://hexdocs.pm/toksomanio).
 

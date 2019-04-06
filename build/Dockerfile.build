@@ -1,0 +1,23 @@
+FROM elixir:1.8.0-alpine
+
+ENV HOME=/opt/app/ TERM=xterm
+
+RUN apk add --update git
+
+RUN mix local.hex --force && \
+    mix local.rebar --force
+
+WORKDIR /opt/app
+
+ENV MIX_ENV=prod
+
+RUN mkdir config
+COPY config/* config/
+COPY mix.exs mix.lock ./
+RUN mix deps.get \
+    && mix deps.compile \
+    && chmod 777 /opt/app
+
+COPY . .
+
+RUN mix release --env=prod --verbose

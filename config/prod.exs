@@ -1,3 +1,3 @@
 use Mix.Config
 
-config :toksomanio, port: 80
+config :toksomanio, port: 4000
